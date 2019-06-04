@@ -3,7 +3,6 @@ var mLoop2= window.setInterval(function() {  graduation() }, 100)
 var mLoop3= window.setInterval(function() {  passiveKnowledge() }, 100)
 var mLoop4= window.setInterval(function() {  techReveal() }, 100)
 var mLoop5= window.setInterval(function() {  brickFire() }, 100)
-var mLoop6= window.setInterval(function() {  taxes() }, 2500)
 var mLoop7= window.setInterval(function() {  passiveReaders() }, 100)
 var mLoop8= window.setInterval(function() {  passiveBotanists() }, 2500)
 var mLoop9= window.setInterval(function() {  papyrusPrice() }, 2500)
@@ -33,6 +32,18 @@ function updateResources() {
   document.getElementById("Wall").innerHTML = "Enclose the Academy: " + gameData.wallprogress.toFixed(0) + "% Complete"
   document.getElementById("Theorems").innerHTML = gameData.theorems.toFixed(0) + " Theorems"
 }
+
+//Resources: Knowledge, Theorems, Ascentics
+function updateResources2() {
+  document.getElementById("Knowledge2").innerHTML = gameData.knowledge.toFixed(2) + " Knowledge"
+  document.getElementById("Theorems2").innerHTML = gameData.theorems.toFixed(0) + " Theorems"
+}
+
+function updateResourceCaps2() {
+  document.getElementById("Ascetics2Cap").innerHTML = gameData.asceticscap + "Ascetics"
+
+}
+
 
 function passiveKnowledge() {
   gameData.knowledge += gameData.students*gameData.studentrate
@@ -87,14 +98,6 @@ function brickFire() {
   updateResources()
 }
 
-function taxes() {
-  if (gameData.land > 3) {
-    gameData.olives -= gameData.olivetax*(gameData.land-3)
-    gameData.drachma -= gameData.drachmatax*(gameData.land -3)
-  }
-  updateResources()
-}
-
 function passiveReaders() {
   if (gameData.olives >= gameData.readers*gameData.readerfood & gameData.drachma >= 0) {
     gameData.olives -= gameData.readers*gameData.readerfood
@@ -131,6 +134,9 @@ function wallBuilding() {
     gameData.bricks -= Math.min(gameData.builders, gameData.bricks)
     gameData.olives -= gameData.wallcostolives*gameData.builders
     gameData.knowledge -= gameData.wallcostknowledge*gameData.builders
+    if (gameData.wallprogress == 100) {
+      document.getElementById("Advance1").style = "visibility:visible"
+    }
   }
   updateResources()
 }

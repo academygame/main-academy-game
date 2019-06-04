@@ -12,7 +12,7 @@ var techData = {
 }
 
 var techlabels = {
-  planting: "Basic Arborculture: " + techData.planttech + " Knowledge<"
+  planting: "Basic Arborculture: " + techData.planttech + " Knowledge"
 
 }
 
@@ -103,6 +103,13 @@ function techInk() {
     document.getElementById("Make Ink").style = "visibility:visible"
     updateResources()
   }
+}
+
+function advanceMonastery() {
+  if (gameData.theorems >= 1 & gameData.wallprogress == 100) {
+    gameData.theorembonus = 1 + Math.log(gameData.theorems)
+    document.getElementById("Era1").style = "display:none"
+    document.getElementById("Era2").style = "visibility:visible"
 }
 
 var techFlags = {

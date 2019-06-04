@@ -1,0 +1,211 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<title>The Academy</title>
+
+<body>
+  <script src="core.js" charset="utf-8" type="text/javascript"></script>
+
+  <script src="tech1.js" charset="utf-8" type="text/javascript"></script>
+  <script src="time.js" charset="utf-8" type="text/javascript"></script>
+  <script src="flair.js" charset="utf-8" type="text/javascript"></script>
+
+  <h4 id="CurrentTip">The beginning is the most important part of the work.</h4>
+  <div class="row" id="Era1" style="visibility:visible">
+
+    <div class="column">
+      <p>Resources</p>
+      <p id="Knowledge">0 Knowledge</p>
+      <p id="Land">3 Land</p>
+      <p id="Olives">0 Olives</p>
+
+      <p id="Young Groves" style="display:none" >0 Young Groves</p>
+      <p id="Grove Maturity" style="display:none" >0 Grove Maturity</p>
+      <p id="Mature Groves" style="display:none" >0 Mature Groves</p>
+
+      <p id="Olive Wood" style="display:none" >0 Olive Wood</p>
+      <p id="Ink" style="display:none">0 Ink</p>
+
+
+      <p id="Papyrus" style="display:none">0 Papyrus</p>
+
+      <p id="Students" style="display:none" >0 Students</p>
+      <p id="EnrolledTime" style="display:none">0 EnrolledTime</p>
+      <p id="Graduates" style="display:none">0 Graduates</p>
+      <p id="Drachma" style="display:none">0 Drachmas</p>
+      <p id="Readers" style="display:none">0 Readers</p>
+      <p id="Botanists" style="display:none">0 Botanists</p>
+      <p id="Builders" style="display:none">0 Builders</p>
+      <p id="Geometers" style="display:none">0 Geometers</p>
+
+      <p id="Bricks" style="display:none">0 Bricks</p>
+      <p id="Wall" style="display:none">Enclose the Academy: 0% Complete</p>
+      <p id="BuildWallFlag" style="display:none">Building Wall?</p>
+
+      <p id="Theorems"style="display:none">0 Theorems</p>
+    </div>
+
+    <div class="column">
+      <p>Actions</p>
+      <p><button onclick="addKnowledge()" data-toggle="tooltip" title="Create knowledge by contemplating the natural order of the cosmos.">Contemplate</button></p>
+
+      <p><button onclick="addLand()" id="LandAdd" data-toggle="tooltip" title="Extend the domains of the Academy by purchasing adjacent lands.">Purchase Land: 100 Drachma</button></p>
+
+      <p><button onclick="addOlive()" data-toggle="tooltip" title="Ancient olive trees grow freely on the Academy grounds. Pick some fresh olives.">Pick Olives</button></p>
+
+      <div id="Grove Actions" style="display:none">
+      <p><button onclick="plantOlive()" data-toggle="tooltip" title="Use some of the Academy's empty land to systematically grow olive trees for agriculture.">Plant Olive Grove: 50 Olives, 1 Land</button></p>
+      <p><button onclick="chopGrove()" data-toggle="tooltip" title="Harvest some olive trees for their wood.">Chop Olive Grove </button></p>
+      </div>
+
+      <div id="Attract Student" style="display:none">
+      <p><button onclick="addStudent()" id="StudentAdd" data-toggle="tooltip" title="Recruit a dedicated student of natural philosophy to the Academy to produce knowledge.">Attract Student: 20 Knowledge</button></p>
+      </div>
+
+      <div id="Lecture" style="display:none">
+      <p><button onclick="addLecture()" data-toggle="tooltip" title="Earn silver by discussing the nature of things for an assembled audience.">Conduct Lecture</button></p>
+      </div>
+
+      <div id="Brick Crafting" style="display:none">
+      <p><button onclick="onOven()" id="BrickOven" data-toggle="tooltip" title="Use olive wood to create a fire to harden clay into bricks.">Fire Bricks</button></p>
+      </div>
+
+      <div><p><button onclick="addReader()" id="ReaderAdd" data-toggle="tooltip" title="Recruit a practiced reader to give public lectures on behalf of the Academy." style="display:none">Hire Reader: 50 Drachma, 50 Knowledge</button></p></div>
+
+      <div><p><button onclick="addBotanist()" id="BotanistAdd" data-toggle="tooltip" title="A botanist can manage the Academy's lands to automatically plant and harvest olive groves." style="display:none">Hire Botanist: 100 Drachma</button></p></div>
+
+      <div id="Make Ink" style="display:none">
+      <p><button onclick="addInk()" id="InkAdd" data-toggle="tooltip" title="Soot from charred olive wood can be combined with the oil of crushed olives to make ink.">Mix Ink: 1 Wood, 5 Olives</button></p>
+      </div>
+
+      <div><p><button onclick="addPapyrus()" id="BuyPapyrus" style="display:none" data-toggle="tooltip" title="Purchase fine papyrus from local merchants, imported from foreign lands.">Buy Papyrus: 60 Drachma</button></p></div>
+
+      <div id="WallToggle" style="display:none">
+      <p><button onclick="addBuilder()" id="BuilderAdd" data-toggle="tooltip" title="Retaining a builder can start using a stockpile of bricks to enclose the Academy with rudimentary walls.">Hire Builder: 200 Drachma</button></p>
+      <p><button onclick="buildWall()" id="BuildWall" data-toggle="tooltip" title="Instruct the builder to use bricks to build walls. ">Construct Academy Wall</button></p>
+      </div>
+
+      <div><p><button onclick="addTheorem()" id="TheoremAdd" style="display:none" data-toggle="tooltip" title="Combine knowledge, ink, and papyrus to record Academy discoveries for future generations...">Prove Theorem: 1000 Knowledge, 3 Ink, 1 Papyrus</button></p></div>
+
+      <div><p><button onclick="addGeometer()" id="GeometerAdd" style="display:none" data-toggle="tooltip" title="A learned geometer can automate all steps of the production of theorems.">Hire Geometer: 500 Knowledge, 100 Drachma </button></p></div>
+
+    </div>
+
+    <div class="column">
+      <p>Upgrades and Technology</p>
+      <!--Unlocks-->
+      <div id="Planting Technology" style="display:none"><button onclick="techPlanting()" data-toggle="tooltip" title="Unlocks ability to plant olive trees systematically.">Basic Arborculture: 50 Knowledge</button></div>
+      <div id="Basic Readers" style="display:none"><button onclick="techBasicReaders()"data-toggle="tooltip" title="Unlocks ability to hire readers who passively conduct lectures.">Create Readers: 200 Knowledge</button></div>
+      <div id="Brick Firing" style="display:none"><button onclick="techBasicBricks()" data-toggle="tooltip" title="Unlock the ability to use olive wood to fire clay and make bricks.">Basic Brick Firing: 200 Knowledge</button></div>
+      <div id="Ink Tech" style="display:none"><button onclick="techInk()" data-toggle="tooltip" title="Unlock the ability to craft ink, which can be used to record knowledge.">Invent Ink: 400 Knowledge</button></div>
+      <!--Upgrades-->
+      <div id="Basic Contemplation"><button onclick="techBasicContemplation()" data-toggle="tooltip" title="Increases return to contemplating." >Introductory Philosophy: 25 Knowledge</button></div>
+      <div id="Basic Students" style="display:none"><button onclick="techBasicStudents()" data-toggle="tooltip" title="Students passively generate more knowledge.">Note Taking: 75 Knowledge</button></div>
+      <div id="Basic Lecturing" style="display:none"><button onclick="techBasicLecture()" style="display:none" data-toggle="tooltip" title="Increases return to lecturing.">Lecterns: 100 knowledge</button></div>
+      <div id="Readers 2" style="display:none"><button onclick="techReaders2()" style="display:none" data-toggle="tooltip" title="Lectures become more popular when there are seats. Reader earn more from lecturing">Stools: 500 Knowledge</button></div>
+      <div id="Protractors" style="display:none"><button onclick="techProtractors()" data-toggle="tooltip" title="Protractors enable Geometers to work more quickly.">Protractors: 300 Knowledge</button></div>
+      <div id="Advance1" style="display:none"><button onclick="advanceMonastery()" data-toggle="tooltip" title="Advance to the next era of knowledge.">Advance!</button></div>
+    </div>
+
+  </div>
+
+<!--Second Era: The Monastery-->
+  <div class="row" id="Era2" style="display:none">
+
+    <div class="column">
+      <p>Resources</p>
+      <p id="Knowledge2">0 Knowledge</p>
+      <p id="Theorems2">0 Theorems</p>
+
+      <p id="Ascetics2">0 Monks</p>
+
+    </div>
+
+    <div class="column">
+      <p>Resource Caps</p>
+      <p id="Knowledge2Cap"></p>
+      <p id="Theorems2Cap"></p>
+      <p id="Ascetics2Cap"></p>
+    </div>
+
+    <div class="column">
+      <p>Buildings</p>
+
+    </div>
+
+
+    <div class="column">
+      <p>Actions</p>
+      p><button onclick="addKnowledge2()" data-toggle="tooltip" title="Read deeply into the mysteries of the natural order.">Study</button></p>
+
+    </div>
+
+    <div class="column">
+      <p>Upgrades and Technology</p>
+
+    </div>
+
+  </div>
+
+<!--Second Era: The Monastery-->
+  <div class="row" id="Era2" style="display:none">
+
+    <div class="column">
+      <p>Resources</p>
+
+    </div>
+
+    <div class="column">
+      <p>Actions</p>
+
+    </div>
+
+    <div class="column">
+      <p>Upgrades and Technology</p>
+
+    </div>
+
+  </div>
+
+  <!--Third Era: The Renaissance University-->
+  <div class="row" id="Era2" style="display:none">
+
+    <div class="column">
+      <p>Resources</p>
+
+    </div>
+
+    <div class="column">
+      <p>Actions</p>
+
+    </div>
+
+    <div class="column">
+      <p>Upgrades and Technology</p>
+
+    </div>
+
+  </div>
+
+<!--Fourth Era: The Modern University-->
+  <div class="row" id="Era2" style="display:none">
+
+    <div class="column">
+      <p>Resources</p>
+
+    </div>
+
+    <div class="column">
+      <p>Actions</p>
+
+    </div>
+
+    <div class="column">
+      <p>Upgrades and Technology</p>
+
+    </div>
+
+  </div>
+
+</body>

@@ -1,6 +1,7 @@
 var gameData = {
+  era: 1,
   knowledge: 0,
-  knowledgePerClick: 1,
+  knowledgePerClick: 1000,
 
   olives: 0,
   olivemax: 4,
